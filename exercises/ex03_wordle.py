@@ -71,6 +71,3 @@ def emojified(guessed_word: str, secret_word: str) -> str:
         idx += 1
 
     return display
-
-
-print(emojified("hello", "melon"))
