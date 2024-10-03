@@ -61,12 +61,13 @@ def emojified(guessed_word: str, secret_word: str) -> str:
     display: str = ""
 
     while idx < len(secret_word):
-        if contains_char(secret_word, guessed_word[idx]):
+        if secret_word[idx] == guessed_word[idx]:
+            display += green_box
+        elif contains_char(secret_word, guessed_word[idx]):
             display += yellow_box
         elif contains_char(secret_word, guessed_word[idx]):
             display += white_box
-        else:
-            display += green_box
+
         idx += 1
 
     return display
