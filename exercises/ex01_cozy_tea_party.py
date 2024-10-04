@@ -5,9 +5,8 @@ def main() -> None:
     people = input("How many people are coming to the party?")
     print(f"You will need {tea_bags(people=int(people))} teabags.")
     print(f"You will also need {treats(people=int(people))} treats to go with the tea.")
-    print(
-        f"The total cost of teabags and treats will be ${cost(tea_count=int(people), treat_count=int(people))}."
-    )
+    print(f"The total cost of teabags and 
+          treats will be ${cost(tea_count=int(people),treat_count=int(people))}.")
 
 
 def tea_bags(people: int) -> int:
@@ -23,7 +22,10 @@ def treats(people: int) -> int:
 
 
 def cost(tea_count: int, treat_count: int) -> float:
-    """Returns the total cost of teabags and treats, which cost 0.5 and 0.75 each respectively."""
+    (
+        """Returns the total cost of teabags and treats, 
+        which cost 0.5 and 0.75 each respectively."""
+    )
 
     return tea_bags(people=tea_count) * 0.5 + treats(people=treat_count) * 0.75
 
