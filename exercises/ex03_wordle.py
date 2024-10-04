@@ -14,11 +14,9 @@ def input_guess(guess_len: int) -> str:
     # I didn't realize the length of the secret word was to be specified when calling
     #   the input_guess function.
 
-    guess: str = input(f"Choose a {guess_len} letter word for your first guess: ")
+    guess: str = input(f"Enter a {guess_len} letter word: ")
     while len(guess) != guess_len:
-        guess = input(
-            f"You must choose a {guess_len} letter word for your first guess: "
-        )
+        guess = input(f"You must choose a {guess_len} letter word: ")
 
     return guess
 
@@ -67,6 +65,8 @@ def emojified(guessed_word: str, secret_word: str) -> str:
     while idx < len(secret_word):
         if secret_word[idx] == guessed_word[idx]:
             display += green_box
+        elif contains_char(secret_word, guessed_word[idx]) and num_char(guessed_word):
+            display += yellow_box
         elif contains_char(secret_word, guessed_word[idx]):
             display += yellow_box
         else:
@@ -77,4 +77,58 @@ def emojified(guessed_word: str, secret_word: str) -> str:
     return display
 
 
-print(emojified("melon", "hello"))
+def num_char(guessed_word: str) -> bool:
+    (
+        """this function is designed to prevent emojified from desplaying a yellow box
+              for a repeated letter in the guessed_word, when there is only one in the
+              secret_word"""
+    )
+    idx2: int = 0
+    guessed_char: str = guessed_word[idx2]
+    condition: bool = True
+
+    while idx2 < len(guessed_word):
+        idx1: int = 0
+        instances: int = 0
+        while idx1 < len(guessed_word):
+            if guessed_char == guessed_word[idx1]:
+                instances += 1
+                idx1 += 1
+            else:
+                idx1 += 1
+
+        if instances > 1:
+            condition = False
+            idx2 += 1
+            if idx2 < len(guessed_word):
+                guessed_char = guessed_word[idx2]
+        else:
+            idx2 += 1
+            if idx2 < len(guessed_word):
+                guessed_char = guessed_word[idx2]
+
+    return condition
+
+
+def main(secret_word: str) -> None:
+    """the entrypoint of of the program and main game loop"""
+    turn: int = 1
+    state: bool = True
+
+    while state and turn <= 6:
+        print(f"=== Turn {turn}/6 ===")
+        guess: str = input_guess(len(secret_word))
+        print(emojified(guess, secret_word))
+
+        if guess == secret_word:
+            print(f"You won in {turn}/6 turns!")
+            state = False
+
+        turn += 1
+
+    if state:
+        print("X/6 - Sorry, try again tomorrow!")
+
+
+if __name__ == "__main__":
+    main("haven")

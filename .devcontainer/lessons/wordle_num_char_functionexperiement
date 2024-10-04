@@ -50,12 +50,18 @@ def new_num_char(guessed_word: str) -> bool:
         if instances > 1:
             condition = False
             idx2 += 1
+            if idx2 < len(guessed_word):
+                guessed_char = guessed_word[idx2]
         else:
             idx2 += 1
-
-        guessed_char = guessed_word[idx2]
+            if idx2 < len(guessed_word):
+                guessed_char = guessed_word[idx2]
 
     return condition
 
+
+# on lines 53 and 57, this if statement is important so that the computer doesn't
+#   try and assign gueesed_char to an index of guessed_word that is out of range,
+#       which will produce an error and prevent the code from running
 
 print(new_num_char("hello"))
