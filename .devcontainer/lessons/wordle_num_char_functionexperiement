@@ -29,3 +29,33 @@ def num_char(guessed_word: str) -> bool:
                 instances = 0
 
     return condition
+
+
+def new_num_char(guessed_word: str) -> bool:
+
+    idx2: int = 0
+    guessed_char: str = guessed_word[idx2]
+    condition: bool = True
+
+    while idx2 < len(guessed_word):
+        idx1: int = 0
+        instances: int = 0
+        while idx1 < len(guessed_word):
+            if guessed_char == guessed_word[idx1]:
+                instances += 1
+                idx1 += 1
+            else:
+                idx1 += 1
+
+        if instances > 1:
+            condition = False
+            idx2 += 1
+        else:
+            idx2 += 1
+
+        guessed_char = guessed_word[idx2]
+
+    return condition
+
+
+print(new_num_char("hello"))

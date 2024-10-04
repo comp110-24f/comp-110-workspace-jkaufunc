@@ -77,4 +77,4 @@ def emojified(guessed_word: str, secret_word: str) -> str:
     return display
 
 
-emojified("havoc", "hello")
+print(emojified("melon", "hello"))
