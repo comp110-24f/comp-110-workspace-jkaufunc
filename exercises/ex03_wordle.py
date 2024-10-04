@@ -36,9 +36,13 @@ def contains_char(secret_word: str, char_guess: str) -> bool:
             condition = True
 
             idx += 1
-
+        else:
+            idx += 1
     return condition
 
+
+# I forgot to add else:\ idx += 1. This I think makes some kind of infinite loop,
+#   which prevents this function and the emojified function from running!
 
 # for now, although I think my contains_char functoin should function, it isn't
 #   generating any output when I try to print a function call
@@ -65,9 +69,12 @@ def emojified(guessed_word: str, secret_word: str) -> str:
             display += green_box
         elif contains_char(secret_word, guessed_word[idx]):
             display += yellow_box
-        elif contains_char(secret_word, guessed_word[idx]):
+        else:
             display += white_box
 
         idx += 1
 
     return display
+
+
+emojified("havoc", "hello")

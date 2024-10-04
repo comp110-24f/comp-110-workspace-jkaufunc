@@ -1,0 +1,31 @@
+def num_char(guessed_word: str) -> bool:
+    (
+        """if a str has more than two of the same character, it will return false,
+      but if every character occurs just once, than it will remain true"""
+    )
+
+    condition: bool = True
+    idx1: int = 0
+    current_letter: str = guessed_word[idx1]
+    instances: int = 0
+
+    while idx1 < len(guessed_word):
+        idx2: int = 0
+        while idx2 < len(guessed_word):
+            if guessed_word[idx2] == current_letter:
+                instances += 1
+                idx2 += 1
+            else:
+                idx2 += 1
+
+            if instances > 1:
+                condition = False
+                idx1 += 1
+                current_letter = guessed_word[idx1]
+                instances = 0
+            else:
+                idx1 += 1
+                current_letter = guessed_word[idx1]
+                instances = 0
+
+    return condition
