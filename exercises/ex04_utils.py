@@ -60,3 +60,5 @@ def extend(list1: list[int], list2: list[int]) -> None:
     """This function appends the itmes from the second list to the end of the first"""
     for idx in range(0, len(list2)):
         list1.append(list2[idx])
+
+    print(list1)
