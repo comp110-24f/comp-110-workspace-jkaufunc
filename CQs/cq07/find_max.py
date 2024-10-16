@@ -8,13 +8,13 @@ def find_and_remove_max(list1: list[int]) -> int:
         max_num = -1
     else:
         max_num: int = list1[0]
-        for idx in list1:
+        for idx in range(0, len(list1)):
             if list1[idx] > max_num:
-                list1[idx] = max_num
+                max_num = list1[idx]
             else:
                 max_num = max_num
 
-        for idx in list1:
+        for idx in range(0, len(list1)):
             if max_num == list1[idx]:
                 list1.pop(idx)
             else:
