@@ -2,7 +2,7 @@ from CQs.cq07.find_max import find_and_remove_max
 
 
 def test_find_and_remove_max_use_case_1() -> None:
-    assert find_and_remove_max([1, 2, 3, 4, 5]) == 5
+    assert find_and_remove_max([1, 2, 3, 5, 5, 4]) == 5
 
 
 def test_find_and_remove_max_use_case_2() -> None:

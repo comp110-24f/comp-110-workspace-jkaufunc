@@ -4,6 +4,8 @@ def find_and_remove_max(list1: list[int]) -> int:
     instances of that value from it"""
     )
 
+    # modified_list: list = []
+
     if len(list1) == 0:
         max_num = -1
     else:
@@ -14,10 +16,19 @@ def find_and_remove_max(list1: list[int]) -> int:
             else:
                 max_num = max_num
 
-        for idx in range(0, len(list1)):
-            if max_num == list1[idx]:
-                list1.pop(idx)
+        num: int = 0
+        while num < len(list1):
+            if list1[num] == max_num:
+                list1.pop(num)
             else:
-                list1 = list1
+                num += 1
+
+        # for idx in range(0, len(list1)):
+        # if list1[idx] != max_num:
+        # modified_list.append(list1[idx])
+        # else:
+        # modified_list = modified_list
+
+    # list1 = modified_list
 
     return max_num
