@@ -12,8 +12,6 @@ def only_evens(list1: list[int]) -> list:
         else:
             new_list = new_list
 
-    print(new_list)
-
     return new_list
 
 
@@ -26,7 +24,11 @@ def sub(list1: list[int], start_idx: int, end_index: int) -> list:
     new_list: list[int] = []
 
     for idx in list1:
-        if start_idx <= idx < end_index:
+        if start_idx < 0:
+            start_idx = 0
+        elif end_index >= len(list1):
+            end_index = list1[-1]
+        elif start_idx <= idx < end_index:
             new_list.append(list1[idx])
         else:
             new_list = new_list
@@ -41,7 +43,7 @@ def add_at_index(list1: list[int], element: int, idx: int) -> None:
         temp_list: list = []
 
         for nums in range(idx, len(list1)):
-            temp_list.append(nums)
+            temp_list.append(list1[nums])
 
         for nums in range(idx, len(list1)):
             list1.pop(nums)
