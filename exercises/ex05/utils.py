@@ -6,8 +6,8 @@ def only_evens(list1: list[int]) -> list:
 
     new_list: list[int] = []
 
-    for num in list1:
-        if num % 2 == 0:
+    for num in range(0, len(list1)):
+        if list1[num] % 2 == 0:
             new_list.append(list1[num])
         else:
             new_list = new_list
@@ -15,7 +15,7 @@ def only_evens(list1: list[int]) -> list:
     return new_list
 
 
-def sub(list1: list[int], start_idx: int, end_index: int) -> list:
+def sub(list1: list[int], start_idx: int, end_idx: int) -> list:
     (
         """this function creates a shortened list from the inputted list bounded by
         a given start and end index"""
@@ -23,15 +23,29 @@ def sub(list1: list[int], start_idx: int, end_index: int) -> list:
 
     new_list: list[int] = []
 
-    for idx in list1:
+    if len(list1) == 0:
+        new_list = new_list
+
+    else:
         if start_idx < 0:
-            start_idx = 0
-        elif end_index >= len(list1):
-            end_index = list1[-1]
-        elif start_idx <= idx < end_index:
-            new_list.append(list1[idx])
+            for num in range(0, len(list1)):
+                if num >= 0 and num < end_idx:
+                    new_list.append(list1[num])
+                else:
+                    new_list = new_list
+        elif end_idx > len(list1):
+            for num in range(0, len(list1)):
+                if num >= start_idx and num < end_idx:
+                    new_list.append(list1[num])
+                else:
+                    new_list = new_list
+                new_list.append(list1[-1])
+        elif start_idx < 0 and end_idx > len(list1):
+            new_list = list1
         else:
-            new_list = new_list
+            for num in range(0, len(list1)):
+                if num >= start_idx and num < end_idx:
+                    new_list.append(list1[num])
 
     return new_list
 
