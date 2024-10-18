@@ -26,23 +26,22 @@ def sub(list1: list[int], start_idx: int, end_idx: int) -> list:
 
     if len(list1) == 0:
         new_list = new_list
-
     else:
-        if start_idx < 0:
-            for num in range(0, len(list1)):
-                if num >= 0 and num < end_idx:
-                    new_list.append(list1[num])
-                else:
-                    new_list = new_list
-        elif end_idx > len(list1):
-            for num in range(0, len(list1)):
-                if num >= start_idx and num < len(list1):
-                    new_list.append(list1[num])
-                else:
-                    new_list = new_list
-                new_list.append(list1[-1])
-        elif start_idx < 0 and end_idx > len(list1):
+        if start_idx < 0 and end_idx > len(list1):
             new_list = list1
+        elif start_idx < 0 or end_idx > len(list1):
+            if start_idx < 0:
+                for num in range(0, len(list1)):
+                    if num >= 0 and num < end_idx:
+                        new_list.append(list1[num])
+                    else:
+                        new_list = new_list
+            elif end_idx > len(list1):
+                for num in range(0, len(list1)):
+                    if num >= start_idx and num < len(list1):
+                        new_list.append(list1[num])
+                    else:
+                        new_list = new_list
         else:
             for num in range(0, len(list1)):
                 if num >= start_idx and num < end_idx:
