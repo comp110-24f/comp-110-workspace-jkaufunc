@@ -59,8 +59,9 @@ def add_at_index(list1: list[int], element: int, idx: int) -> None:
         for nums in range(idx, len(list1)):
             temp_list.append(list1[nums])
 
-        for nums in range(idx, len(list1)):
-            list1.pop(nums)
+        widx: int = idx
+        while widx in range(idx, len(list1)):
+            list1.pop(widx)
 
         list1.append(element)
 
