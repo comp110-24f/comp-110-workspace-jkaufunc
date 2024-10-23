@@ -9,4 +9,6 @@ ice_cream.pop("chocolate")
 
 # how do you know if a certain key is in the dictionary? You can check! The syntax is
 # <key> in <dict_name>, and it will return a bool (True/False)
-print("coffee" in ice_cream)
+# print("coffee" in ice_cream)
+
+# print(ice_cream)
