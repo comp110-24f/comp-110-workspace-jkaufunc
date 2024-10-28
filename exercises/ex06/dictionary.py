@@ -20,17 +20,13 @@ def invert(x: dict[str, str]) -> dict[str, str]:
 
     return new_dict
 
+    # test_dict: dict[str, str] = {"hello": "world", "happy": "birthday"}
+    # test_dict_2: dict[str,str,] = {"happy": "day", "sunny": "day"}
+    # test_dict_3: dict[str, str] = {"happy": "day", "hello": "world", "sunny": "day"}
 
-test_dict: dict[str, str] = {"hello": "world", "happy": "birthday"}
-test_dict_2: dict[
-    str,
-    str,
-] = {"happy": "day", "sunny": "day"}
-test_dict_3: dict[str, str] = {"happy": "day", "hello": "world", "sunny": "day"}
-
-# print(invert(test_dict_2))
-# print(invert(test_dict_3))
-# the result for both tests is a KeyError as expected
+    # print(invert(test_dict_2))
+    # print(invert(test_dict_3))
+    # the result for both tests is a KeyError as expected
 
 
 def favorite_color(names_colors: dict[str, str]) -> str:
@@ -41,26 +37,20 @@ def favorite_color(names_colors: dict[str, str]) -> str:
     color_count: dict[str, int] = {}
 
     for key in names_colors:
-        if key in color_count:
-            color_count[key] += 1
+        color: str = names_colors[key]
+        if color in color_count:
+            color_count[color] += 1
         else:
-            color_count[key] = 1
+            color_count[color] = 1
 
-    count_list: list[int] = []
-    color_list: list[str] = []
+    print(color_count)
 
-    for key in names_colors:
-        count_list.append(color_count[key])
+    count: int = 0
 
-    for key in names_colors:
-        color_list.append(key)
-
-    for idx in range(0, len(count_list)):
-        count: int = 0
-        if idx >= count:
-            count = idx
-
-        fav = fav
+    for key in color_count:
+        if color_count[key] > count:
+            count = color_count[key]
+            fav = key
 
     return fav
 
@@ -148,25 +138,65 @@ def favorite_color(names_colors: dict[str, str]) -> str:
     """
     return fav
 
+    # color_dict_1: dict[str, str] = {"James": "blue", "Andy": "purple",
+    #   "Timmy": "blue"}
+    # color_dict_2: dict[str, str] = {"Gerald": "red","Elmo": "red","Bob": "yellow",
+    #   "Big Bird": "yellow","Blaze": "yellow","James": "blue",}
+    # color_dict_3: dict[str, str] = {"Gerald": "red","Jessie": "green","Elmo": "red",
+    #   "James": "blue","Holley": "green",}
 
-color_dict_1: dict[str, str] = {"James": "blue", "Andy": "purple", "Timmy": "blue"}
-color_dict_2: dict[str, str] = {
-    "Gerald": "red",
-    "Elmo": "red",
-    "Bob": "yellow",
-    "Big Bird": "yellow",
-    "Blaze": "yellow",
-    "James": "blue",
-}
-color_dict_3: dict[str, str] = {
-    "Gerald": "red",
-    "Jessie": "green",
-    "Elmo": "red",
-    "James": "blue",
-    "Holley": "green",
-}
+    # print(favorite_color(color_dict_1))
+    # print(favorite_color(color_dict_2))
+    # print(favorite_color(color_dict_3))
 
 
-print(favorite_color(color_dict_1))
-print(favorite_color(color_dict_2))
-print(favorite_color(color_dict_3))
+def count(list_str: list[str]) -> dict[str, int]:
+    """
+    function returns a dictionary of strings (keys) and the number of times each
+    occurs in the inputted list (values)
+    """
+
+    return_dict: dict[str, int] = {}
+
+    for idx in list_str:
+        if idx in return_dict:
+            return_dict[idx] += 1
+        else:
+            return_dict[idx] = 1
+
+    return return_dict
+
+    # test_list: list[str] = ["hi", "hello", "sup", "hi", "sup", "hi", "hiiiiiii"]
+    # print(count(test_list))
+
+
+def alphabetizer(inp_list: list[str]) -> dict[str, list[str]]:
+    """
+    this function groups the words in the inputted string based on the letters
+    they start with
+    """
+
+    ret_dict: dict[str, list[str]] = {}
+
+    """
+    letter_list: list[str] = []
+
+    for idx in inp_list:
+        letter_list.append(idx[0])
+    """
+
+    temp_list: list[str] = []
+    for string in inp_list:
+        ret_dict[string[0]] = temp_list
+        if not string[0] in ret_dict:
+            for elem in inp_list:
+                if elem[0] == string[0]:
+                    temp_list.append(elem.lower())
+            ret_dict[string[0]] = temp_list
+        temp_list: list[str] = []
+
+    return ret_dict
+
+
+test_list: list[str] = ["cat", "mouse", "chair", "barn", "cape", "mother"]
+print(alphabetizer(test_list))
