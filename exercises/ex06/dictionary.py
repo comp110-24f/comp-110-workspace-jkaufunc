@@ -36,7 +36,7 @@ test_dict_3: dict[str, str] = {"happy": "day", "hello": "world", "sunny": "day"}
 def favorite_color(names_colors: dict[str, str]) -> str:
     """returns the most frequent color"""
 
-    color_count: dict[str, int] = {}
+    color_count: dict[int, str] = {}
 
     fav: str = ""
 
@@ -52,29 +52,26 @@ def favorite_color(names_colors: dict[str, str]) -> str:
     """
 
     for key in names_colors:
-        color_count[key] = 1
+        color_count[1] = names_colors[key]
 
-    print(color_count)
-
-    for key in color_count:
-        count: int = 1
-        for key_2 in color_count:
-            if key == key_2:
-                count += 1
-        color_count[key] = count
-
-    print(color_count)
+    new_color_count: dict[int, str] = {}
 
     for key in color_count:
-        for key_2 in color_count:
-            if color_count[key] >= color_count[key_2]:
-                fav = key
+        color: str = color_count[key]
+        count: int = 0
+        if key == key + 1:
+            count += 1
+        new_color_count[count] = color
+
+    for key in new_color_count:
+        if key >= key + 1:
+            fav = new_color_count[key]
 
     return fav
 
 
 # try switching the order of types in the dictionary color_count, e.i. dict[int, str]
-#   to allow you to use indexing
+#   to allow the use of indexing
 
 
 color_dict: dict[str, str] = {"James": "blue", "Andy": "purple", "Timmy": "blue"}
