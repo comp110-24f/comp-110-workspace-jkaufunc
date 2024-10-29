@@ -54,90 +54,6 @@ def favorite_color(names_colors: dict[str, str]) -> str:
 
     return fav
 
-    """
-    color_count: dict[int, str] = {}
-
-    for key in names_colors:
-        for key_2 in color_count:
-            if key_2 == names_colors[key]:
-                color_count[key_2] += 1
-            else:
-                color_count[key_2] = 1
-
-    print(color_count)
-    """
-    """
-    for key in names_colors:
-        color_count[1] = names_colors[key]
-
-    print(color_count)
-
-    new_color_count: dict[int, str] = {}
-
-    count: int = 0
-
-    for key in range(0, len(color_count) - 1):
-        color: str = color_count[key]
-        for key_2 in color_count:
-            if color_count[key] == color_count[key_2]:
-                count += 1
-            new_color_count[count] = color
-            count: int = 0
-
-    for key in range(0, len(new_color_count) - 1):
-        if key >= key + 1:
-            fav = new_color_count[key]
-
-    print(new_color_count)
-    print(fav)
-
-    return fav
-    """
-    # try switching the order of types in the dictionary color_count,
-    # e.i. dict[int, str] to allow the use of indexing
-
-    """
-    names_list: list[str] = []
-
-    color_list: list[str] = []
-
-    fav: str = ""
-
-    for key in names_colors:
-        names_list.append(key)
-    for key in names_colors:
-        color_list.append(names_colors[key])
-
-    color_count: dict[str, int] = {}
-
-    # print(names_list)
-    # print(color_list)
-    """
-
-    """
-    for idx in names_list:
-        color_count[idx] = 0
-
-    indx: int = 0
-    idx_2: int = 1
-    while indx in range(indx, len(color_list) - 1):
-        while idx_2 in range(idx_2, len(color_list)):
-            count: int = 1
-            if color_list[indx] == color_list[idx_2]:
-                count += 1
-                color_list.pop(idx_2)
-            else:
-                idx_2 += 1
-        color_count[color_list[indx]] = count
-        indx += 1
-        idx_2 += 1
-    for key in color_count:
-        for key_2 in color_count:
-            if color_count[key] >= color_count[key_2]:
-                fav = key
-    """
-    return fav
-
     # color_dict_1: dict[str, str] = {"James": "blue", "Andy": "purple",
     #   "Timmy": "blue"}
     # color_dict_2: dict[str, str] = {"Gerald": "red","Elmo": "red","Bob": "yellow",
@@ -193,7 +109,7 @@ def alphabetizer(inp_list: list[str]) -> dict[str, list[str]]:
                 if elem[0] == string[0]:
                     temp_list.append(elem.lower())
             ret_dict[string[0]] = temp_list
-        temp_list: list[str] = []
+        temp_list = []
 
     return ret_dict
 
@@ -201,37 +117,36 @@ def alphabetizer(inp_list: list[str]) -> dict[str, list[str]]:
     # print(alphabetizer(test_list))
 
 
-def update_attendance(dct: dict[str, list[str]], day: str, student: str):
+def update_attendance(dct: dict[str, list[str]], day: str, student: str) -> None:
     """
     updates a dict[str, list[str]] of the days of the week and the students in
     attendance on those days
     """
 
-    new_dict: dict[str, list[str]] = {}
-
-    for key in dct:
-        new_dict[key] = dct[key]
-
-    for key in dct:
-        if day not in new_dict:
-            new_dict[day].append(student)
-        else:
+    if day not in dct:
+        dct[day] = []
+        dct[day].append(student)
+    else:
+        for key in dct:
             if key == day:
-                new_dict[key].append(student)
-
-    dct = new_dict
-
-    # attendance_log: dict[str, list[str,]] = {"Monday": ["James, Ocean, Amelia"],
-    #   "Tuesday": ["Sid, George, Chris"],"Wednesday": ["Bob"],}
-
-    # print(attendance_log)
+                dct[key].append(student)
 
     """
+    attendance_log: dict[str, list[str,]] = {
+        "Monday": ["James, Ocean, Amelia"],
+        "Tuesday": ["Sid, George, Chris"],
+        "Wednesday": ["Bob"],
+    }
+
+    print(attendance_log)
+
+
     print(attendance_log)
     print(update_attendance(attendance_log, "Thursday", "Gerald"))
     print(attendance_log)
     print(update_attendance(attendance_log, "Wednesday", "Wendy"))
     print(attendance_log)
+
+    update_attendance(attendance_log, "Wednesday", "Wendy")
+    print(attendance_log)
     """
-    # update_attendance(attendance_log, "Wednesday", "Wendy")
-    # print(attendance_log)
