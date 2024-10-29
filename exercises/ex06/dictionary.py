@@ -187,8 +187,8 @@ def alphabetizer(inp_list: list[str]) -> dict[str, list[str]]:
 
     temp_list: list[str] = []
     for string in inp_list:
-        ret_dict[string[0]] = temp_list
         if not string[0] in ret_dict:
+            ret_dict[string[0]] = temp_list
             for elem in inp_list:
                 if elem[0] == string[0]:
                     temp_list.append(elem.lower())
@@ -197,6 +197,32 @@ def alphabetizer(inp_list: list[str]) -> dict[str, list[str]]:
 
     return ret_dict
 
+    # test_list: list[str] = ["cat", "mouse", "chair", "barn", "cape", "mother"]
+    # print(alphabetizer(test_list))
 
-test_list: list[str] = ["cat", "mouse", "chair", "barn", "cape", "mother"]
-print(alphabetizer(test_list))
+
+def update_attendance(dct: dict[str, list[str]], day: str, student: str):
+    """
+    updates a dict[str, list[str]] of the days of the week and the students in
+    attendance on those days
+    """
+
+    new_dict: dict[str, list[str]] = dct
+
+    for key in dct:
+        if key == day:
+            new_dict[day].append(student)
+        else:
+            new_dict[day] = [student]
+
+    dct = new_dict
+
+
+attendance_log: dict[str, list[str,]] = {
+    "Monday": ["James, Ocean, Amelia"],
+    "Tuesday": ["Sid, George, Chris"],
+    "Wednesday": ["Bob"],
+}
+print(attendance_log)
+print(update_attendance(attendance_log, "Thursday", "Gerald"))
+print(update_attendance(attendance_log, "Wednesday", "Wendy"))
