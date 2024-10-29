@@ -207,22 +207,31 @@ def update_attendance(dct: dict[str, list[str]], day: str, student: str):
     attendance on those days
     """
 
-    new_dict: dict[str, list[str]] = dct
+    new_dict: dict[str, list[str]] = {}
 
     for key in dct:
-        if key == day:
+        new_dict[key] = dct[key]
+
+    for key in dct:
+        if day not in new_dict:
             new_dict[day].append(student)
         else:
-            new_dict[day] = [student]
+            if key == day:
+                new_dict[key].append(student)
 
     dct = new_dict
 
+    # attendance_log: dict[str, list[str,]] = {"Monday": ["James, Ocean, Amelia"],
+    #   "Tuesday": ["Sid, George, Chris"],"Wednesday": ["Bob"],}
 
-attendance_log: dict[str, list[str,]] = {
-    "Monday": ["James, Ocean, Amelia"],
-    "Tuesday": ["Sid, George, Chris"],
-    "Wednesday": ["Bob"],
-}
-print(attendance_log)
-print(update_attendance(attendance_log, "Thursday", "Gerald"))
-print(update_attendance(attendance_log, "Wednesday", "Wendy"))
+    # print(attendance_log)
+
+    """
+    print(attendance_log)
+    print(update_attendance(attendance_log, "Thursday", "Gerald"))
+    print(attendance_log)
+    print(update_attendance(attendance_log, "Wednesday", "Wendy"))
+    print(attendance_log)
+    """
+    # update_attendance(attendance_log, "Wednesday", "Wendy")
+    # print(attendance_log)
