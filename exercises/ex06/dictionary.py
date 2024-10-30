@@ -43,7 +43,7 @@ def favorite_color(names_colors: dict[str, str]) -> str:
         else:
             color_count[color] = 1
 
-    print(color_count)
+    # print(color_count)
 
     count: int = 0
 
