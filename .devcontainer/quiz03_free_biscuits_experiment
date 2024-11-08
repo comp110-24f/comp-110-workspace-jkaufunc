@@ -1,0 +1,30 @@
+"""
+Write a function called free_biscuits. Given a dictionary with str keys
+(representing basketball games) and list[int] values (representing points
+scored by players),free_biscuits should return a new dictionary of type dict[str, bool]
+that maps each game to a boolean value for free biscuits. (True if the points add up
+to 100+, False if otherwise)
+Example: free_biscuits({ “UNCvsDuke”: [38, 20, 42] , “UNCvsState”: [9, 51, 16, 23] })
+should return { “UNCvsDuke”: True, “UNCvsState”: False }
+"""
+
+
+def free_biscuits(input: dict[str, list[int]]) -> dict[str, bool]:
+    result: dict[str, bool] = {}
+
+    for key in input:
+        working_list: list[int] = input[key]
+        sum: int = 0
+
+        for idx in working_list:
+            sum += idx
+
+        if sum >= 100:
+            result[key] = True
+        else:
+            result[key] = False
+
+    return result
+
+
+# okay, I get it now :)
