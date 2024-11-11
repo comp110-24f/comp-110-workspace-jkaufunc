@@ -2,12 +2,14 @@
 
 
 class Fish:
+    """A new fish class."""
+
     age: int
 
     def __init__(self):
-        """initializing the age of a fish at 0"""
+        """Initializing the age of a fish at 0."""
         self.age = 0
 
     def one_day(self):
-        """method adds 1 age to every each fish per day"""
+        """Method adds 1 age to every each fish per day."""
         self.age += 1
