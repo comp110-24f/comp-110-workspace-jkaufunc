@@ -27,7 +27,25 @@ def last(head: Node) -> int:
         return last(head.next)
 
 
+def recursive_range(start: int, end: int) -> Node | None:
+    """Creates a linked list with values from start to end using the Node class."""
+    # Edge case
+    if start > end:
+        raise ValueError("start cannot be greater than end")
+    # Base case
+    if start == end:
+        return None
+    # Recursive case
+    else:
+        first: int = start
+        rest: Node | None = recursive_range(start + 1, end)
+        return Node(first, rest)
+
+
+"""
 two: Node = Node(2, None)
 one: Node = Node(1, two)
 print(one)
 print(last(one))
+"""
+print(recursive_range(1, 15))
