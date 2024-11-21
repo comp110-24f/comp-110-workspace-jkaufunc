@@ -23,6 +23,7 @@ class Node:
 
 
 def last(head: Node) -> int:
+    """Returns the last integer in a linked list of Nodes."""
     if head.next is None:
         return head.value
     else:
@@ -75,21 +76,54 @@ def value_at(head: Node | None, index: int) -> int:
 
 def max(head: Node | None) -> int:
     """Returns the maximum value in the linked list."""
-
     if head is None:
         raise ValueError("Cannot call max with None.")
     elif head.next is None:
         return head.value
     else:
-        output: int = head.value
-        if head.next.value > output:
-            return max(head.next)
+        x: int = max(head.next)
+        if head.value > x:
+            return head.value
         else:
-            return output
+            return max(head.next)
+        # if head.next.value > output:
+        #     return max(head.next)
+        # else:
+        #     return output
 
 
-my_node: Node = Node(1, Node(2, Node(3, Node(4, Node(5, Node(6, None))))))
-print(max(my_node))
+# my_node: Node = Node(1, Node(2, Node(3, Node(4, Node(5, Node(6, None))))))
+# print(max(my_node))
 
-tricky_node: Node = Node(1, Node(3, Node(2, Node(5, None))))
-print(max(tricky_node))
+# tricky_node: Node = Node(1, Node(3, Node(2, Node(5, None))))
+# final_test_node: Node = Node(1, None)
+# print(max(tricky_node))
+# # print(max(None))
+# print(max(final_test_node))
+
+
+def linkify(input: list[int]) -> Node | None:
+    """Converts a list of integers into a linked list of Nodes."""
+    x: list[int] = list(input)
+    if len(x) > 0:
+        x.pop(0)
+        return Node(input[0], linkify(x))
+
+
+# test_list: list[int] = [1, 2, 3, 4, 5]
+# ideal_node: Node = Node(1, Node(2, Node(3, Node(4, Node(5, None)))))
+# print(linkify(test_list))
+
+
+def scale(head: Node | None, factor: int) -> Node | None:
+    """Multiplies all the terms in a linked list of Nodes by the inputted factor."""
+    if head is None:
+        raise ValueError("Cannot call scale with None.")
+    elif head.next is None:
+        return Node(head.value * factor, None)
+    elif head.next is not None:
+        return Node(head.value * factor, scale(head.next, factor))
+
+
+# test_node: Node = Node(1, Node(2, Node(3, Node(4, Node(5, None)))))
+# print(scale(test_node, 2))
